@@ -73,11 +73,16 @@ st.markdown("""
 # Load model
 @st.cache_resource
 def load_model():
-    with open('model.pkl', 'rb') as f:
-        model = pickle.load(f)
-    return model
+    import os
 
-model = load_model()
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    model_path = os.path.join(BASE_DIR, "model.pkl")
+
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+
+    return model
 
 # Header
 st.markdown('<div class="main-title">🔍 Credit Card Fraud Detection</div>', unsafe_allow_html=True)
