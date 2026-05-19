@@ -6,7 +6,20 @@
 import streamlit as st
 import numpy as np
 import pickle
+import os
 
+BASE_DIR = os.path.dirname(__file__)
+
+MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
+
+with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
+    
+    SCALER_PATH = os.path.join(BASE_DIR, "scaler.pkl")
+
+with open(SCALER_PATH, "rb") as f:
+    scaler = pickle.load(f)
+    
 # Page config
 st.set_page_config(
     page_title="Fraud Detection System",
